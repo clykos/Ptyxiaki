@@ -1,18 +1,16 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Create New Mission</title>
+    <title>Edit Mission</title>
 </head>
 <body>
 <b>
-    <center>Create new Mission</center>
+    <center>Edit Mission</center>
 </b>
 
-<b>Enter Title</b>
 <form method="post" action="">
-    <textarea name="comments" cols="25" rows="5">
-Enter missions title here...
-    </textarea><br>
+    <br><input type="checkbox" name=agent value=""> Agent Mission </br>
+    <br><input type="checkbox" name=public value=""> Public Mission </br>
 </form>
 
 <div align="right">
@@ -24,13 +22,6 @@ Enter missions title here...
     </form>
 </div>
 
-<b>Enter Description</b>
-<form method="post" action="">
-    <textarea name="comments" cols="45" rows="5">
-Enter description here...
-    </textarea><br>
-</form>
-
 <div align="right">
     <form>
         Mission Score:
@@ -39,10 +30,7 @@ Enter description here...
     <input type="submit" value="Submit"/>
 </div>
 
-<form method="post" action="">
-    <br><input type="checkbox" name=agent value=""> Agent Mission </br>
-    <br><input type="checkbox" name=public value=""> Public Mission </br>
-</form>
+
 
 </body>
 </html>
