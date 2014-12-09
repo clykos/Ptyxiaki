@@ -1,6 +1,12 @@
+-- MySQL Workbench Forward Engineering
+
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
+
+-- -----------------------------------------------------
+-- Schema project
+-- -----------------------------------------------------
 
 -- -----------------------------------------------------
 -- Schema project
@@ -15,6 +21,7 @@ CREATE TABLE IF NOT EXISTS `project`.`users` (
   `idusers` INT NOT NULL AUTO_INCREMENT,
   `username` VARCHAR(45) NULL,
   `role` VARCHAR(45) NULL,
+  `score` INT NULL,
   PRIMARY KEY (`idusers`))
 ENGINE = InnoDB;
 
@@ -40,6 +47,8 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `project`.`missions` (
   `idmissions` INT NOT NULL AUTO_INCREMENT,
+  `description` VARCHAR(45) NULL,
+  `title` VARCHAR(45) NULL,
   `score` INT NULL,
   `start_date` DATETIME NULL,
   `final_date` DATETIME NULL,
@@ -52,6 +61,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `project`.`reports` (
   `idreports` INT NOT NULL AUTO_INCREMENT,
+  `description` VARCHAR(45) NULL,
   `title` VARCHAR(45) NULL,
   `significance` VARCHAR(45) NULL,
   `photo` BLOB NULL,
