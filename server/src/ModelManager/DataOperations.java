@@ -11,13 +11,14 @@ import java.sql.Timestamp;
 
 public class DataOperations {
 
-    public static UsersEntity createUser(String username, String role) {
+    public static UsersEntity createUser(String username, String role, int score) {
 
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         UsersEntity ue = new UsersEntity();
         ue.setUsername(username);
         ue.setRole(role);
+        ue.setScore(score);
         session.saveOrUpdate(ue);
         session.getTransaction().commit();
         return ue;
@@ -25,12 +26,13 @@ public class DataOperations {
     }
 
 
-    public UsersEntity updateUser(int idusers, String username, String role) {
+    public UsersEntity updateUser(int idusers, String username, String role, int score) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         UsersEntity ue = (UsersEntity) session.get(UsersEntity.class, idusers);
         ue.setUsername(username);
         ue.setRole(role);
+        ue.setScore(score);
         session.getTransaction().commit();
         return ue;
     }

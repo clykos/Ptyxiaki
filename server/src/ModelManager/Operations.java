@@ -8,12 +8,12 @@ import java.sql.Timestamp;
 public class Operations {
     DataOperations dp = new DataOperations();
 
-    public void create(String username, String role) {
-        dp.createUser(username, role);
+    public void create(String username, String role, int score) {
+        dp.createUser(username, role, score);
     }
 
-    public void update(int id, String name, String role) {
-        dp.updateUser(id, name, role);
+    public void update(int id, String name, String role, int score) {
+        dp.updateUser(id, name, role, score);
     }
 
     public void delete(int idusers) {

@@ -5,11 +5,59 @@
 <hibernate-mapping>
 
     <class name="entities.ReportsEntity" table="reports" schema="" catalog="project">
-        <id name="idreports" column="idreports"/>
-        <property name="title" column="title"/>
-        <property name="significance" column="significance"/>
-        <property name="photo" column="photo"/>
-        <property name="idmissions" column="idmissions"/>
-        <property name="status" column="status"/>
+        <id name="idreports">
+            <column name="idreports" sql-type="int" not-null="true"/>
+        </id>
+        <property name="description">
+            <column name="description" sql-type="varchar" length="45"/>
+        </property>
+        <property name="title">
+            <column name="title" sql-type="varchar" length="45"/>
+        </property>
+        <property name="significance">
+            <column name="significance" sql-type="varchar" length="45"/>
+        </property>
+        <property name="photo">
+            <column name="photo" sql-type="blob"/>
+        </property>
+        <property name="idmissions">
+            <column name="idmissions" sql-type="int"/>
+        </property>
+        <property name="status">
+            <column name="status" sql-type="enum" length="13"/>
+        </property>
+        <many-to-one name="missionsByIdmissions" class="entities.MissionsEntity">
+            <column name="idmissions"/>
+        </many-to-one>
+        <set name="commentsByIdreports" inverse="true">
+            <key>
+                <column name="idreports"/>
+            </key>
+            <one-to-many not-found="ignore" class="entities.CommentEntity"/>
+        </set>
+        <set name="dublicatereportsesByIdreports" inverse="true">
+            <key>
+                <column name="reportIdDublicate" not-null="true"/>
+            </key>
+            <one-to-many not-found="ignore" class="entities.DublicatereportsEntity"/>
+        </set>
+        <set name="dublicatereportsesByIdreports_0" inverse="true">
+            <key>
+                <column name="reportIdSource" not-null="true"/>
+            </key>
+            <one-to-many not-found="ignore" class="entities.DublicatereportsEntity"/>
+        </set>
+        <set name="reportcategoriesesByIdreports" inverse="true">
+            <key>
+                <column name="rId" not-null="true"/>
+            </key>
+            <one-to-many not-found="ignore" class="entities.ReportcategoriesEntity"/>
+        </set>
+        <set name="usersHasReportsesByIdreports" inverse="true">
+            <key>
+                <column name="reports_idreports" not-null="true"/>
+            </key>
+            <one-to-many not-found="ignore" class="entities.UsersHasReportsEntity"/>
+        </set>
     </class>
 </hibernate-mapping>

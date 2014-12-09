@@ -6,8 +6,18 @@
 
     <class name="entities.ReportcategoriesEntity" table="reportcategories" schema="" catalog="project">
         <composite-id mapped="true" class="entities.ReportcategoriesEntityPK">
-            <key-property name="rId" column="rId"/>
-            <key-property name="cId" column="cId"/>
+            <key-property name="rId">
+                <column name="rId" sql-type="int" not-null="true"/>
+            </key-property>
+            <key-property name="cId">
+                <column name="cId" sql-type="int" not-null="true"/>
+            </key-property>
         </composite-id>
+        <many-to-one name="categoriesByCId" class="entities.CategoriesEntity">
+            <column name="cId" not-null="true"/>
+        </many-to-one>
+        <many-to-one name="reportsByRId" class="entities.ReportsEntity">
+            <column name="rId" not-null="true"/>
+        </many-to-one>
     </class>
 </hibernate-mapping>

@@ -22,9 +22,9 @@ public class WebService {
 
     @WebMethod
     //Users
-    public UserBean createUser(String username, String role) {
+    public UserBean createUser(String username, String role, int score) {
         Operations op = new Operations();
-        op.create(username, role);
+        op.create(username, role, score);
         return new UserBean();
     }
     public UserBean deleteUser(int id) {
@@ -32,9 +32,9 @@ public class WebService {
         op.delete(id);
         return new UserBean();
     }
-    public UserBean updateUser(int id, String name, String role) {
+    public UserBean updateUser(int id, String name, String role, int score) {
         Operations op = new Operations();
-        op.update(id, name, role);
+        op.update(id, name, role, score);
         return new UserBean();
     }
 

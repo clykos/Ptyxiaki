@@ -3,7 +3,7 @@ package entities;
 import javax.persistence.*;
 
 /**
- * Created by Giota on 2/7/2014.
+ * Created by Xristos on 9/12/2014.
  */
 @Entity
 @Table(name = "dublicatereports", schema = "", catalog = "project")
@@ -11,9 +11,11 @@ import javax.persistence.*;
 public class DublicatereportsEntity {
     private int reportIdSource;
     private int reportIdDublicate;
+    private ReportsEntity reportsByReportIdDublicate;
+    private ReportsEntity reportsByReportIdSource;
 
     @Id
-    @Column(name = "reportIdSource")
+    @Column(name = "reportIdSource", nullable = false, insertable = true, updatable = true)
     public int getReportIdSource() {
         return reportIdSource;
     }
@@ -23,7 +25,7 @@ public class DublicatereportsEntity {
     }
 
     @Id
-    @Column(name = "reportIdDublicate")
+    @Column(name = "reportIdDublicate", nullable = false, insertable = true, updatable = true)
     public int getReportIdDublicate() {
         return reportIdDublicate;
     }
@@ -50,5 +52,25 @@ public class DublicatereportsEntity {
         int result = reportIdSource;
         result = 31 * result + reportIdDublicate;
         return result;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "reportIdDublicate", referencedColumnName = "idreports", nullable = false)
+    public ReportsEntity getReportsByReportIdDublicate() {
+        return reportsByReportIdDublicate;
+    }
+
+    public void setReportsByReportIdDublicate(ReportsEntity reportsByReportIdDublicate) {
+        this.reportsByReportIdDublicate = reportsByReportIdDublicate;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "reportIdSource", referencedColumnName = "idreports", nullable = false)
+    public ReportsEntity getReportsByReportIdSource() {
+        return reportsByReportIdSource;
+    }
+
+    public void setReportsByReportIdSource(ReportsEntity reportsByReportIdSource) {
+        this.reportsByReportIdSource = reportsByReportIdSource;
     }
 }

@@ -5,19 +5,23 @@
 <hibernate-mapping>
 
     <class name="entities.CommentEntity" table="comment" schema="" catalog="project">
-        <id name="idcomment" column="idcomment"/>
-        <property name="idreports" column="idreports"/>
-        <property name="idusers" column="idusers"/>
-        <property name="text" column="text"/>
-
-
-        <many-to-one name="report"
-                     class="entities.ReportsEntity"
-                     column="idreports"
-                     cascade="save-update"
-                insert="false" update="false">
+        <id name="idcomment">
+            <column name="idcomment" sql-type="int" not-null="true"/>
+        </id>
+        <property name="idreports">
+            <column name="idreports" sql-type="int"/>
+        </property>
+        <property name="idusers">
+            <column name="idusers" sql-type="int"/>
+        </property>
+        <property name="text">
+            <column name="text" sql-type="text" length="65535"/>
+        </property>
+        <many-to-one name="reportsByIdreports" class="entities.ReportsEntity">
+            <column name="idreports"/>
         </many-to-one>
-
-
+        <many-to-one name="usersByIdusers" class="entities.UsersEntity">
+            <column name="idusers"/>
+        </many-to-one>
     </class>
 </hibernate-mapping>

@@ -3,7 +3,7 @@ package entities;
 import javax.persistence.*;
 
 /**
- * Created by Giota on 2/7/2014.
+ * Created by Xristos on 9/12/2014.
  */
 @Entity
 @Table(name = "login", schema = "", catalog = "project")
@@ -11,9 +11,10 @@ public class LoginEntity {
     private int iduser;
     private String username;
     private String password;
+    private UsersEntity usersByIduser;
 
     @Id
-    @Column(name = "iduser")
+    @Column(name = "iduser", nullable = false, insertable = true, updatable = true)
     public int getIduser() {
         return iduser;
     }
@@ -23,7 +24,7 @@ public class LoginEntity {
     }
 
     @Basic
-    @Column(name = "username")
+    @Column(name = "username", nullable = true, insertable = true, updatable = true, length = 45)
     public String getUsername() {
         return username;
     }
@@ -33,7 +34,7 @@ public class LoginEntity {
     }
 
     @Basic
-    @Column(name = "password")
+    @Column(name = "password", nullable = true, insertable = true, updatable = true, length = 45)
     public String getPassword() {
         return password;
     }
@@ -62,5 +63,15 @@ public class LoginEntity {
         result = 31 * result + (username != null ? username.hashCode() : 0);
         result = 31 * result + (password != null ? password.hashCode() : 0);
         return result;
+    }
+
+    @OneToOne
+    @JoinColumn(name = "iduser", referencedColumnName = "idusers", nullable = false)
+    public UsersEntity getUsersByIduser() {
+        return usersByIduser;
+    }
+
+    public void setUsersByIduser(UsersEntity usersByIduser) {
+        this.usersByIduser = usersByIduser;
     }
 }

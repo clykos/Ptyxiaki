@@ -5,13 +5,13 @@ import javax.persistence.Id;
 import java.io.Serializable;
 
 /**
- * Created by Giota on 2/7/2014.
+ * Created by Xristos on 9/12/2014.
  */
 public class DublicatereportsEntityPK implements Serializable {
     private int reportIdSource;
     private int reportIdDublicate;
 
-    @Column(name = "reportIdSource")
+    @Column(name = "reportIdSource", nullable = false, insertable = true, updatable = true)
     @Id
     public int getReportIdSource() {
         return reportIdSource;
@@ -21,7 +21,7 @@ public class DublicatereportsEntityPK implements Serializable {
         this.reportIdSource = reportIdSource;
     }
 
-    @Column(name = "reportIdDublicate")
+    @Column(name = "reportIdDublicate", nullable = false, insertable = true, updatable = true)
     @Id
     public int getReportIdDublicate() {
         return reportIdDublicate;

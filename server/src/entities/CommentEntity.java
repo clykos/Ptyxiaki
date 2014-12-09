@@ -1,10 +1,9 @@
 package entities;
 
 import javax.persistence.*;
-import java.util.Set;
 
 /**
- * Created by Giota on 2/7/2014.
+ * Created by Xristos on 9/12/2014.
  */
 @Entity
 @Table(name = "comment", schema = "", catalog = "project")
@@ -13,18 +12,11 @@ public class CommentEntity {
     private Integer idreports;
     private Integer idusers;
     private String text;
-    private ReportsEntity report;
-
-    public ReportsEntity getReport() {
-        return report;
-    }
-
-    public void setReport(ReportsEntity report) {
-        this.report = report;
-    }
+    private ReportsEntity reportsByIdreports;
+    private UsersEntity usersByIdusers;
 
     @Id
-    @Column(name = "idcomment")
+    @Column(name = "idcomment", nullable = false, insertable = true, updatable = true)
     public int getIdcomment() {
         return idcomment;
     }
@@ -34,7 +26,7 @@ public class CommentEntity {
     }
 
     @Basic
-    @Column(name = "idreports")
+    @Column(name = "idreports", nullable = true, insertable = true, updatable = true)
     public Integer getIdreports() {
         return idreports;
     }
@@ -44,7 +36,7 @@ public class CommentEntity {
     }
 
     @Basic
-    @Column(name = "idusers")
+    @Column(name = "idusers", nullable = true, insertable = true, updatable = true)
     public Integer getIdusers() {
         return idusers;
     }
@@ -54,7 +46,7 @@ public class CommentEntity {
     }
 
     @Basic
-    @Column(name = "text")
+    @Column(name = "text", nullable = true, insertable = true, updatable = true, length = 65535)
     public String getText() {
         return text;
     }
@@ -85,5 +77,25 @@ public class CommentEntity {
         result = 31 * result + (idusers != null ? idusers.hashCode() : 0);
         result = 31 * result + (text != null ? text.hashCode() : 0);
         return result;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "idreports", referencedColumnName = "idreports")
+    public ReportsEntity getReportsByIdreports() {
+        return reportsByIdreports;
+    }
+
+    public void setReportsByIdreports(ReportsEntity reportsByIdreports) {
+        this.reportsByIdreports = reportsByIdreports;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "idusers", referencedColumnName = "idusers")
+    public UsersEntity getUsersByIdusers() {
+        return usersByIdusers;
+    }
+
+    public void setUsersByIdusers(UsersEntity usersByIdusers) {
+        this.usersByIdusers = usersByIdusers;
     }
 }

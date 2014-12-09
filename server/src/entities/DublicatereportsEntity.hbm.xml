@@ -6,8 +6,18 @@
 
     <class name="entities.DublicatereportsEntity" table="dublicatereports" schema="" catalog="project">
         <composite-id mapped="true" class="entities.DublicatereportsEntityPK">
-            <key-property name="reportIdSource" column="reportIdSource"/>
-            <key-property name="reportIdDublicate" column="reportIdDublicate"/>
+            <key-property name="reportIdSource">
+                <column name="reportIdSource" sql-type="int" not-null="true"/>
+            </key-property>
+            <key-property name="reportIdDublicate">
+                <column name="reportIdDublicate" sql-type="int" not-null="true"/>
+            </key-property>
         </composite-id>
+        <many-to-one name="reportsByReportIdDublicate" class="entities.ReportsEntity">
+            <column name="reportIdDublicate" not-null="true"/>
+        </many-to-one>
+        <many-to-one name="reportsByReportIdSource" class="entities.ReportsEntity">
+            <column name="reportIdSource" not-null="true"/>
+        </many-to-one>
     </class>
 </hibernate-mapping>

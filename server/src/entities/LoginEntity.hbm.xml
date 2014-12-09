@@ -5,8 +5,15 @@
 <hibernate-mapping>
 
     <class name="entities.LoginEntity" table="login" schema="" catalog="project">
-        <id name="iduser" column="iduser"/>
-        <property name="username" column="username"/>
-        <property name="password" column="password"/>
+        <id name="iduser">
+            <column name="iduser" sql-type="int" not-null="true"/>
+        </id>
+        <property name="username">
+            <column name="username" sql-type="varchar" length="45"/>
+        </property>
+        <property name="password">
+            <column name="password" sql-type="varchar" length="45"/>
+        </property>
+        <one-to-one name="usersByIduser" class="entities.UsersEntity"/>
     </class>
 </hibernate-mapping>
