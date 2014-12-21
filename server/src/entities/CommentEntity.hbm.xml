@@ -17,11 +17,11 @@
         <property name="text">
             <column name="text" sql-type="text" length="65535"/>
         </property>
-        <many-to-one name="reportsByIdreports" class="entities.ReportsEntity">
+<!--        <many-to-one name="reportsByIdreports" class="entities.ReportsEntity">
             <column name="idreports"/>
         </many-to-one>
         <many-to-one name="usersByIdusers" class="entities.UsersEntity">
             <column name="idusers"/>
-        </many-to-one>
+        </many-to-one>-->
     </class>
 </hibernate-mapping>
