@@ -26,9 +26,9 @@
         <property name="status">
             <column name="status" sql-type="enum" length="13"/>
         </property>
-       <!-- <many-to-one name="missionsByIdmissions" class="entities.MissionsEntity">
+        <many-to-one name="missionsByIdmissions" class="entities.MissionsEntity">
             <column name="idmissions"/>
-        </many-to-one>-->
+        </many-to-one>
         <set name="commentsByIdreports" inverse="true">
             <key>
                 <column name="idreports"/>
@@ -53,11 +53,11 @@
             </key>
             <one-to-many not-found="ignore" class="entities.ReportcategoriesEntity"/>
         </set>
-       <!-- <set name="usersHasReportsesByIdreports" inverse="true">
+        <set name="usersHasReportsesByIdreports" inverse="true">
             <key>
                 <column name="reports_idreports" not-null="true"/>
             </key>
             <one-to-many not-found="ignore" class="entities.UsersHasReportsEntity"/>
-        </set>-->
+        </set>
     </class>
 </hibernate-mapping>

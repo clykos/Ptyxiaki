@@ -8,36 +8,41 @@
     <center>Create new Mission</center>
 </b>
 
-<b>Enter Title</b><br>
-
-<form action="savemission.jsp" id="usrform" method="post">
-    <textarea rows="4" cols="50" name="tle" form="usrform">
-Enter text here...</textarea>
-
-
-    <div align="right">
-        Starting Day:<br>
-        <input type="date" name="sbday" max=""><br>
-        Ending Day:<br>
-        <input type="date" name="fbday" min=""><br>
-    </div>
-
-
-<b>Enter Description</b><br>
-    <textarea rows="4" cols="50" name="desc" form="usrform">
-Enter description here...</textarea><br>
-
-
-<div align="right">
-Mission Score: <input type="number" name="quantity" min="" max="">
-</div>
-<input type="submit">
+<b>Enter Title</b>
+<form method="post" action="">
+    <textarea name="comments" cols="25" rows="5">
+Enter missions title here...
+    </textarea><br>
 </form>
 
-<!--<form method="post" action="savemission.jsp">
+<div align="right">
+    <form action="">
+        Starting Day:<br>
+        <input type="date" name="bday" max=""><br><br>
+        Ending Day:<br>
+        <input type="date" name="bday" min=""><br><br>
+    </form>
+</div>
+
+<b>Enter Description</b>
+<form method="post" action="">
+    <textarea name="comments" cols="45" rows="5">
+Enter description here...
+    </textarea><br>
+</form>
+
+<div align="right">
+    <form>
+        Mission Score:
+        <input type="number" name="quantity" min="" max="">
+    </form>
+    <input type="submit" value="Submit"/>
+</div>
+
+<form method="post" action="">
     <br><input type="checkbox" name=agent value=""> Agent Mission </br>
     <br><input type="checkbox" name=public value=""> Public Mission </br>
-</form> -->
+</form>
 
 </body>
 </html>

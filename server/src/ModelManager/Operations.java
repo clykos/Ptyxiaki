@@ -20,8 +20,8 @@ public class Operations {
         dp.deleteUser(idusers);
     }
 
-    public void createR(String title, String description, String significance, byte[] photo) {
-        dp.createReport(title, description, significance, photo);
+    public void createR(String title, String significance, byte[] photo) {
+        dp.createReport(title, significance, photo);
     }
 
     public void updateR(int idreports, String title, String significance, byte[] photo) {
@@ -40,8 +40,8 @@ public class Operations {
         dp.deleteComment(idcomment);
     }
 
-    public void createM(String title, String description, int score,Timestamp startDate,Timestamp finalDate){
-        dp.createMission(title, description, score,startDate,finalDate);
+    public void createM(int score,Timestamp startDate,Timestamp finalDate){
+        dp.createMission(score,startDate,finalDate);
     }
 
     public void updateM(int idmissions ,int score,Timestamp startDate,Timestamp finalDate){

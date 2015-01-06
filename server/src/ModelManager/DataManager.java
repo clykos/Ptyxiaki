@@ -7,7 +7,6 @@ interface DataManager {
     public void createUser();
     public void updateUser();
     public void deleteUser();
-    public void genuineUser();
 
     public void createReport();
     public void updateReport();
