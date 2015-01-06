@@ -10,7 +10,7 @@ import ModelManager.Operations;
 public class Main {
     public static void main(String[] args) {
         DataOperations op = new DataOperations();
-        op.createUser("theodoridis", "admin", 50);
+        op.createReport("Both Hole", "Both hole in Metamorfosi,Attikis", "most", null);
         System.out.println("-----");
         /*//op.deleteUser(4);
        // op.updateUser(3,"likos","user");

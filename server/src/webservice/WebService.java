@@ -39,9 +39,9 @@ public class WebService {
     }
 
     //Reports
-    public ReportsBean createReports(String title, String significance, byte[] photo) {
+    public ReportsBean createReports(String title, String description, String significance, byte[] photo) {
         Operations op = new Operations();
-        op.createR(title, significance, photo);
+        op.createR(title, description, significance, photo);
         return new ReportsBean();
     }
     public ReportsBean updateReports(int idreports, String title, String significance, byte[] photo) {
@@ -68,9 +68,9 @@ public class WebService {
     }
 
     //Missions
-    public MissionsBean createMission(int score,Timestamp startDate,Timestamp finalDate) {
+    public MissionsBean createMission(String title, String description, int score,Timestamp startDate,Timestamp finalDate) {
         Operations op = new Operations();
-        op.createM(score, startDate, finalDate);
+        op.createM(title, description, score, startDate, finalDate);
         return new MissionsBean();
     }
 

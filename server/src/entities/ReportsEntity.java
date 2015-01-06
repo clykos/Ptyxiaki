@@ -160,7 +160,7 @@ public class ReportsEntity {
         this.reportcategoriesesByIdreports = reportcategoriesesByIdreports;
     }
 
-    @ManyToOne
+  /*  @ManyToOne
     @JoinColumn(name = "idmissions", referencedColumnName = "idmissions")
     public MissionsEntity getMissionsByIdmissions() {
         return missionsByIdmissions;
@@ -177,5 +177,5 @@ public class ReportsEntity {
 
     public void setUsersHasReportsesByIdreports(Collection<UsersHasReportsEntity> usersHasReportsesByIdreports) {
         this.usersHasReportsesByIdreports = usersHasReportsesByIdreports;
-    }
+    }*/
 }

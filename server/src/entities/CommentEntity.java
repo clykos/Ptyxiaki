@@ -79,7 +79,7 @@ public class CommentEntity {
         return result;
     }
 
-    @ManyToOne
+    /*@ManyToOne
     @JoinColumn(name = "idreports", referencedColumnName = "idreports")
     public ReportsEntity getReportsByIdreports() {
         return reportsByIdreports;
@@ -93,7 +93,7 @@ public class CommentEntity {
     @JoinColumn(name = "idusers", referencedColumnName = "idusers")
     public UsersEntity getUsersByIdusers() {
         return usersByIdusers;
-    }
+    }*/
 
     public void setUsersByIdusers(UsersEntity usersByIdusers) {
         this.usersByIdusers = usersByIdusers;

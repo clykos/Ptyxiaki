@@ -2,7 +2,7 @@ package ModelManager;
 
 import entities.*;
 import org.hibernate.Session;
-
+import java.sql.*;
 import java.sql.Timestamp;
 
 /**
@@ -23,6 +23,31 @@ public class DataOperations {
         session.getTransaction().commit();
         return ue;
 
+    }
+
+    public ResultSet genuineUser(String username, String password) throws ClassNotFoundException, SQLException {
+        Class.forName("com.mysql.jdbc.Driver");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project",
+                "root", "root");
+        Statement st = con.createStatement();
+        ResultSet rs;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        rs = st.executeQuery("select * from login where username='" + username + "' and password='" + password + "'");
+        return rs;
+
+    }
+
+    public ResultSet viewReport()throws ClassNotFoundException, SQLException{
+        Class.forName("com.mysql.jdbc.Driver");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project",
+                "root", "root");
+        Statement st = con.createStatement();
+        ResultSet rs;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        rs = st.executeQuery("select * from reports");
+        return rs;
     }
 
 
@@ -62,11 +87,12 @@ public class DataOperations {
     }
 
 
-    public ReportsEntity createReport(String title, String significance, byte[] photo) {
+    public ReportsEntity createReport(String title, String description, String significance, byte[] photo) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         ReportsEntity re = new ReportsEntity();
         re.setTitle(title);
+        re.setDescription(description);
         re.setSignificance(significance);
         re.setPhoto(photo);
         session.saveOrUpdate(re);
@@ -99,10 +125,12 @@ public class DataOperations {
 
     }
 
-    public MissionsEntity createMission(int score,Timestamp startDate,Timestamp finalDate) {
+    public MissionsEntity createMission(String title, String description, int score,Timestamp startDate,Timestamp finalDate) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         MissionsEntity me = new MissionsEntity();
+        me.setDescription(description);
+        me.setTitle(title);
         me.setScore(score);
         me.setStartDate(startDate);
         me.setFinalDate(finalDate);
